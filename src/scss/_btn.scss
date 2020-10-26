@@ -1,0 +1,28 @@
+%btn {
+	text-decoration: none;
+	display: inline-block;
+	padding: 20px;
+	color: #ffffff;
+	background: #222222;
+	width: 224px;
+	position: relative;
+}
+
+.btn {
+	@extend %btn;
+}
+.btn--tail {
+	@extend %btn;
+
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 5px;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: skewX(-40deg);
+		border-top: 1px solid #ffffff;	
+	}
+}

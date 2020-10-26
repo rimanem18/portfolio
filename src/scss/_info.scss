@@ -1,0 +1,48 @@
+.info {
+	padding: 20px;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+
+	@include mq() {
+		width: 48%;
+		margin-left: 1%;
+	}
+
+	&__label {
+		background: #222222;
+		color: #ffffff;
+		display: inline-block;
+		padding: 0.5em 1.5em;
+		position: absolute;
+		top: -1em;
+		left: -1em;
+	}
+
+	&__list-item {
+		padding: 1em;
+
+		&:not(:last-child()){
+			border-bottom: 1px solid #ddd;
+		}
+	}
+	&__list {
+		width: 900px;
+		margin: 0 auto;
+	}
+
+	&__item {
+
+		@include mq(){
+			display: inline-block;
+		}
+	}
+	&__item--date {
+		@include mq(){
+			width: 10em;
+			display: inline-block;
+		}
+	}
+
+	&__more {
+		text-align: right;
+	}
+}

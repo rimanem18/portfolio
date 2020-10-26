@@ -1,0 +1,10 @@
+.clip-inset {
+	text-align: center;
+	clip-path: inset(0 0 0 100%);
+	transition: all 1s ease;
+	font-size: 28px;
+
+	&.fadeOn {
+		clip-path: inset(0);
+	}
+}

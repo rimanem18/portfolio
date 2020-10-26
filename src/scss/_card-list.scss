@@ -1,0 +1,17 @@
+.card-list {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 50px 0;
+	
+	@include mq(){
+		display: flex;
+	}
+
+	&__item {
+		padding: 20px;
+
+		@include mq(){
+			margin: 150px 0;
+		}
+	}
+}

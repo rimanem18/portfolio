@@ -1,0 +1,140 @@
+.overlap-panels {
+	width: 100%;
+	position: relative;
+	padding: 3em 0;
+
+	%__child {
+		opacity: 0;
+		transform: translate(-80px, 0) translateZ(0);
+		transition: 1.2s cubic-bezier(0.14, 1, 0.34, 1), opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+		&.fadeOn {
+			opacity: 1;
+			transform: translateZ(0);
+		}
+	}
+	%__child--second {
+		opacity: 0;
+		transform: translate(80px, 0) translateZ(0);
+		transition: 1.2s cubic-bezier(0.14, 1, 0.34, 1), opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+		&.fadeOn {
+			opacity: 1;
+			transform: translateZ(0);
+		}
+	}
+
+	&__bg-blue {
+		width: 88%;
+		height: 104%;
+		background-color: #e9f4f7;
+		position: absolute;
+		top: calc(-2% - 25px);
+		left: 0;
+		transition-delay: 0.08s;
+		@extend %__child;
+
+		@include mq() {
+			width: 80%;
+			height: 415px;
+			top: 230px;
+			left: auto;
+			right: 0;
+		}
+	}
+	&__bg-blue--second {
+		width: 100%;
+		height: 100%;
+		background-color: #e9f4f7;
+		position: absolute;
+		transition-delay: 0.08s;
+		@extend %__child--second;
+
+		@include mq() {
+			height: 600px;
+			top: 0;
+			left: auto;
+			right: 0;
+		}
+	}
+
+	&__img {
+		opacity: 0;
+		transform: translate(-80px, 0) translateZ(0);
+		margin: 0;
+		z-index: 2;
+		overflow: hidden;
+		position: relative;
+		transition-delay: 0.16s;
+		@extend %__child;
+
+		@include mq() {
+			width: 80%;
+			height: 500px;
+		}
+	}
+	&__img--second {
+		opacity: 0;
+		transform: translate(-80px, 0) translateZ(0);
+		margin: 0;
+		z-index: 2;
+		overflow: hidden;
+		transition-delay: 0.16s;
+		@extend %__child--second;
+
+		@include mq() {
+			left: 40%;
+			top: 718px;
+			position: absolute;
+			height: 625px;
+			width: 400px;
+			top: 100px;
+			left: calc(70% - 108px);
+		}
+	}
+
+	&__contents {
+		opacity: 0;
+		transform: translate(-80px, 0) translateZ(0);
+		position: relative;
+		top: -50px;
+		z-index: 5;
+		padding: 0 15px;
+		transition-delay: 0.24s;
+		@extend %__child;
+
+		@include mq() {
+			width: 44.7916%;
+			min-width: 600px;
+			padding: 0;
+			top: -200px;
+			left: calc(50% - 108px);
+		}
+	}
+	&__contents--second {
+		opacity: 0;
+		transform: translate(-80px, 0) translateZ(0);
+		position: relative;
+		margin: -250px 0 0 0;
+		z-index: 5;
+		padding: 0 15px;
+		transition-delay: 0.24s;
+		@extend %__child--second;
+
+		@include mq() {
+			margin: 0;
+			width: 44.7916%;
+			min-width: 600px;
+			padding: 0;
+			top: 45px;
+			left: 120px;
+		}
+	}
+	&__contents--second .box__contents--pd {
+		background: white;
+
+		@include mq(){
+			background: transparent;
+		}
+	}
+}

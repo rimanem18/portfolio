@@ -1,0 +1,43 @@
+.banner {
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	position: relative;
+	transition-duration: 0.8s;
+	box-shadow: 0px 0px 23.76px 0.24px rgba(0, 0, 0, 0.1);
+
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 5px;
+		position: absolute;
+		right: 30px;
+		transform: skewX(-40deg);
+		border-right: 1px solid #202021;
+		border-top: 1px solid #202021;
+	}
+
+	&__img {
+		width: 34%;
+
+		@include mq() {
+			height: 100px;
+			width: 230px;
+		}
+	}
+
+	&__text {
+		color: #1538aa;
+		font-weight: bold;
+		margin-left: 20px;
+		width: 40%;
+		line-height: 2;
+		font-size: 0.8em;
+
+		@include mq() {
+			font-size: 0.8em;
+		}
+	}
+}

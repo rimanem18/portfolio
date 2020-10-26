@@ -1,0 +1,21 @@
+.overflow-up {
+	padding: 2em 0;
+	box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.16);
+	background: #ffffff;
+	position: relative;
+	z-index: 2;
+
+	@include mq(){
+		width: 85%;
+		display: flex;
+		margin: -10vh auto 120px auto;
+		padding: 2.5vh 0 2.5vh 0;
+	}
+
+	&__item {
+
+		@include mq(){
+			width: calc(100% / 3);
+		}
+	}
+}

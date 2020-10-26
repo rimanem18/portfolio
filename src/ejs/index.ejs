@@ -1,0 +1,186 @@
+<%- include('_header') %>gi
+<div class="kv">
+	<img class="kv__item" src="<%= domain %>/img/kv01.png" alt="">
+</div>
+
+<div class="overflow-up">
+	<%
+	const infoList = [
+		{
+			date: "2020-06-05",
+			title: "封じられた遊び×アリスとテレス コラボ決定！"
+		},
+		{
+			date: "2020-01-21",
+			title: "「封じられた遊び」登録者数10万人突破キャンペーン！"
+		},
+		{
+			// date: "2019-10-30",
+			// title: "「窓の向こうに見えるもの。- Lost Life -」事前登録受付中！"
+			date: "2019-10-30",
+			title: "第12回バーチャルティストに出展につきまして"
+		},
+	]
+	%>
+	<h2 class="info__label">
+		<span class="info__label-text">News</span>
+	</h2>
+	<dl class="info__list">
+
+		<% infoList.forEach(element => { %>
+		<div class="info__list-item">
+			<dt class="info__item--date"><span><%= element.date %></span></dt>
+			<dd class="info__item">
+				<% // url が定義されているときだけリンク %>
+				<% if(element.url == null){ %>
+				<%= element.title %>
+				<% } else { %>
+				<a href="<%= element.url %>">
+					<%= element.title %>
+				</a>
+				<% } // endif %>
+				<% // 定義されているときだけテキスト表示 %>
+				<% if(element.text != null){  %>
+				<br><%= element.text %>
+				<% } // endif %>
+			</dd>
+		</div>
+		<% }); // endfor %>
+	</dl>
+</div>
+
+<div class="overlap-panels">
+	<div class="overlap-panels__bg-blue"></div>
+	<div class="overlap-panels__img">
+		<img class="img" src="<%= domain %>/img/dummy.jpg" alt="">
+	</div>
+	<div class="overlap-panels__contents">
+		<div class="box">
+			<div class="box__contents--pd">
+				<div class="box__title">
+					<p class="text-en">Dammy Service</p>
+					<h2 class="text-jp">ダミーサービス</h2>
+				</div>
+				<p class="box__read">ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。</p>
+				<p>ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。
+					ダミーテキストを入れます。ダミーテキストを入れます。
+				</p>
+				<p>
+					ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。
+				</p>
+				<p>
+					ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。
+					ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。ダミーテキストを入れます。
+				</p>
+				<a href="javascript:void(0)" class="btn--tail is-animated">
+					<span>ダミーサービスを見る</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h2 class="clip-inset">ダミー経営について</h2>
+
+<div class="overlap__bg-gray">
+	<div class="overlap__img-left">
+		<div class="overlap__inner-box">
+			<div class="overlap__comment">
+				<div class="txt_area">
+					<h3 class="txt_blue">ダミー改革</h3>
+					<p>ここにテキストが入ります。ダミーテキストダミーテキストダミーテキスト。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。<br>
+						ここにテキストが入ります。ダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。ダミーテキストダミーテキスト。
+					</p>
+				</div>
+
+				<ul class="banner-list">
+					<li class="banner-list__item">
+						<a href="javascript:(0)" class="banner"><img src="<%= domain %>/img/dummy.jpg" alt=""
+								class="banner__img"><span class="banner__text">ダミー沿革</span>
+						</a>
+					</li>
+					<li class="banner-list__item">
+						<a href="javascript:(0)" class="banner"><img src="<%= domain %>/img/dummy.jpg" alt=""
+								class="banner__img"><span class="banner__text">ダミー情報</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div><!-- overlap -->
+
+<div class="overlap-panels">
+	<div class="overlap-panels__bg-blue--second"></div>
+	<div class="overlap-panels__img--second">
+		<img class="img" src="<%= domain %>/img/president.jpg" alt="">
+	</div>
+	<div class="overlap-panels__contents--second">
+		<div class="">
+			<div class="box__contents--pd">
+				<div class="box__title">
+					<p class="">Message</p>
+					<h2 class="">代表者メッセージ</h2>
+					<p>CEO 兼代表取締役社長 松田 純一郎</p>
+				</div>
+				<p class="box__read">ゲームで人のこころと世界を動かす</p>
+				<p>
+
+				</p>
+				<p>
+					ここ数年でスマートフォンゲームはいくつも発表され、まるで波に押し流されるかのように廃れていきます。<br>
+					この「<%= title %>」という社名は、そんな変化の波に乗っていけるように名付けられました。
+				</p>
+				<p>
+					日本のサブカルチャーは今や海外にも広く認知され、そして深く愛されるものとなっています。<br>
+					私たちはそんな素敵なつながりを、よりよりモノにしていきたいと考えています。
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%
+const blogList = [
+	{
+		img: domain+"/img/blog01_thumb.jpg",
+		label: "Unity",
+		title: "Unity で制作したコンテンツを軽量化する方法",
+		summary: "単純に「軽量化する」といっても軽量の意味には二つあります。解説するにあたって参考になった・参考になる記事へ…",
+		tag: "ゲーム開発"
+	},
+	{
+		img: domain+"/img/blog02_thumb.jpg",
+		label: "Android",
+		title: "apk ファイルを Andorid にインストールするには",
+		summary: " 設定 -> セキュリティから「提供元不明のアプリのインストールを許可する」にチェック。次にapkファイルが入っ…",
+		tag: "スマートフォン"
+	},
+	{
+		img: domain+"/img/blog03_thumb.jpg",
+		label: "SEO",
+		title: "アナリティクスの解析精度を高めるためにやったこと",
+		summary: " アクセス解析ツールにはいろいろありますが、やはり有名どころは「Googleアナリティクス」。しかしデフォルトの機…",
+		tag: "サイト運営"
+	},
+]
+%>
+<ul class="card-list">
+	<% blogList.forEach(element => { %>
+	<li class="card-list__item">
+		<a class="card" href="javascript:(0)">
+			<div class="card__img">
+				<img src="<%= element.img %>" alt="">
+			</div>
+			<div class="card__text">
+				<span class="card__label"><%= element.label %></span>
+				<h3 class="card__title"><%= element.title %></h3>
+				<p class="card__summary"><%= element.summary %> </p>
+				<span class="card__tag"><%= element.tag %> </span>
+			</div>
+		</a>
+	</li>
+	<% }); // foreach %>
+</ul>
+
+<%- include('_footer') %>

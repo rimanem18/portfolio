@@ -1,0 +1,52 @@
+.card {
+	box-shadow: 5px 5px #dce5f6;
+	margin: auto 0;
+	height: 100%;
+	position: relative;
+	transition: ease 0.25s;
+	color: #222222;
+	text-decoration: none;
+	display: inline-block;
+	border: 1px solid transparent;
+	background: #ffffff;
+
+	&:hover {
+		box-shadow: none;
+		transform: translate(3px, 3px);
+		border: 1px solid #222222;
+	}
+
+	&__img {
+		height: 220px;
+		overflow: hidden;
+	}
+
+	&__text {
+		padding: 10px;
+	}
+
+	&__title {
+		padding: 10px 0;
+	}
+	&__tag {
+		display: inline-block;
+		margin: 20px 0;
+		padding: 10px;
+		border: dotted 1px #cccccc;
+
+		@include mq() {
+			position: relative;
+			bottom: 0;
+			left: 60%;
+		}
+	}
+
+	&__label {
+		position: absolute;
+		background: #6dc76d;
+		color: #ffffff;
+		top: 0;
+		left: 0;
+		padding: 5px;
+	}
+}
