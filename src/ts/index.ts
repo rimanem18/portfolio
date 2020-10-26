@@ -1,6 +1,20 @@
 'use strict';
-const {intersectAction} = require('./libs/intersectAction');
+const { intersectAction } = require('./libs/intersectAction');
+const Swiper = require('./libs/swiper.min.js');
 
+var swiper = new Swiper('.swiper-container', {
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 
 const d = document;
 
@@ -20,5 +34,5 @@ animClass.forEach(anim => {
 			element.classList.add('fadeOn');
 			observer.unobserve(element);
 		}
-	},null);
+	}, null);
 });
