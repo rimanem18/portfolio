@@ -889,7 +889,7 @@ button.swiper-pagination-bullet {
   display: inline-block;
   padding: 0.5em 1.5em;
   position: absolute;
-  top: -1em;
+  top: -1.5em;
   left: -1em;
 }
 
@@ -910,6 +910,10 @@ button.swiper-pagination-bullet {
   .info__item {
     display: inline-block;
   }
+}
+
+.info__item--date {
+  font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {
