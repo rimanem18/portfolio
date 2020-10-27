@@ -53,7 +53,7 @@ const PATHS = {
 		bundle: "./dist/js/bundle.js"
 	},
 	image: {
-		src: "./src/img/**",
+		src: "./src/img/**/*.{jpg,jpeg,png,gif,svg}",
 		dest: "./dist/img"
 	},
 	font: {
