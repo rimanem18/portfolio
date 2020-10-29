@@ -1,0 +1,27 @@
+.tbl {
+	width: 100%;
+
+	&__row {
+		border-bottom: 1px solid #999999;
+	}
+
+	%__cell {
+		display: block;
+		padding: 0.8em;
+		text-align: center;
+
+		@include mq() {
+			display: inline-block;
+		}
+	}
+	&__head {
+		@extend %__cell;
+		@include mq() {
+			width: 33%;
+		}
+	}
+	&__data {
+		text-align: left;
+		@extend %__cell;
+	}
+}

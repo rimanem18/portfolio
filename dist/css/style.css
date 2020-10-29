@@ -1145,7 +1145,7 @@ button.swiper-pagination-bullet {
   background-repeat: no-repeat;
   z-index: 2;
   position: relative;
-  background-image: url(../img/dummy.jpg);
+  background-image: url(../img/office.jpg);
   background-position: top center;
   padding: 64.4% 0 0;
 }
@@ -1223,4 +1223,34 @@ button.swiper-pagination-bullet {
     max-width: 660px;
     width: 53.68%;
   }
+}
+
+.tbl {
+  width: 100%;
+}
+
+.tbl__row {
+  border-bottom: 1px solid #999999;
+}
+
+.tbl .tbl__head, .tbl .tbl__data {
+  display: block;
+  padding: 0.8em;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .tbl .tbl__head, .tbl .tbl__data {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tbl__head {
+    width: 33%;
+  }
+}
+
+.tbl__data {
+  text-align: left;
 }

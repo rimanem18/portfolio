@@ -1,4 +1,7 @@
 {
 	"domain": "http://localhost:3000",
-	"title": "チェンジ・ライド・ゲームス"
+	"title": "チェンジ・ライド・ゲームス",
+	"postCode": "〒131-8634",
+	"address": "東京都墨田区押上１丁目１−２",
+	"president": "松田 純一郎"
 }
