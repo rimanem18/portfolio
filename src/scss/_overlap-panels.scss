@@ -1,7 +1,11 @@
 .overlap-panels {
 	width: 100%;
 	position: relative;
-	padding: 3em 0;
+	padding: 2em 0;
+
+	@include mq(){
+		padding: 0;
+	}
 
 	%__child {
 		opacity: 0;

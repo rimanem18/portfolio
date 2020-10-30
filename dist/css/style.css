@@ -696,6 +696,12 @@ button.swiper-pagination-bullet {
   }
 }
 
+.blog {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 200px 0;
+}
+
 .box {
   margin: 0 auto;
   height: 100%;
@@ -777,9 +783,7 @@ button.swiper-pagination-bullet {
 }
 
 .card-list {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -790,12 +794,6 @@ button.swiper-pagination-bullet {
 
 .card-list__item {
   padding: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .card-list__item {
-    margin: 150px 0;
-  }
 }
 
 .card {
@@ -869,6 +867,29 @@ button.swiper-pagination-bullet {
 
 .container {
   overflow: hidden;
+}
+
+.googlemap {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 60%;
+  margin-bottom: 200px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .googlemap {
+    margin-top: -75px;
+    padding-bottom: 30%;
+  }
+}
+
+.googlemap__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .info {
@@ -958,7 +979,13 @@ button.swiper-pagination-bullet {
 .overlap-panels {
   width: 100%;
   position: relative;
-  padding: 3em 0;
+  padding: 2em 0;
+}
+
+@media screen and (min-width: 768px) {
+  .overlap-panels {
+    padding: 0;
+  }
 }
 
 .overlap-panels .overlap-panels__bg-blue, .overlap-panels .overlap-panels__img, .overlap-panels .overlap-panels__contents {
@@ -1145,7 +1172,7 @@ button.swiper-pagination-bullet {
   background-repeat: no-repeat;
   z-index: 2;
   position: relative;
-  background-image: url(../img/office.jpg);
+  background-image: url(../img/room.jpg);
   background-position: top center;
   padding: 64.4% 0 0;
 }
@@ -1227,6 +1254,13 @@ button.swiper-pagination-bullet {
 
 .tbl {
   width: 100%;
+  background: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .tbl {
+    background: transparent;
+  }
 }
 
 .tbl__row {

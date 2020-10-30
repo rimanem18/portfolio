@@ -1,5 +1,10 @@
 .tbl {
 	width: 100%;
+	background: #fff;	
+
+	@include mq(){
+		background: transparent;
+	}
 
 	&__row {
 		border-bottom: 1px solid #999999;
