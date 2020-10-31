@@ -2,7 +2,34 @@
 
 
 <footer class="footer">
-	<small>&copy; Change Ride Games co., Ltd.</small>
+
+	<div class="foot-bnr">
+		<%
+		const footBnr = [
+			{
+//				url: domain+'/contact/',
+				url: 'javascript:void(0)',
+				title: 'お問い合わせ',
+				text: 'ご相談・ご質問等ございましたら<br>お気軽にご連絡ください。'
+			},
+			{
+//				url: domain+'/recruit/',
+				url: 'javascript:void(0)',
+				title: '採用情報',
+				text: 'プロット企画・デザインのかける方からエンジニアにいたるまで、<br>幅広い人材を募集しています。'
+			}
+		]
+		%> 
+		<% footBnr.forEach(element => { %>
+			<a href="<%= element.url %>" class="foot-bnr__link">
+				<div class="foot-bnr__title"><%= element.title %></div>
+				<div class="foot-bnr__text"><%- element.text %></div>
+			</a>
+		<% }); // endforach %>
+	</div>
+	<div class="copyright">
+		<small>&copy; Change Ride Games co., Ltd.</small>
+	</div>
 </footer>
 
 </body>
