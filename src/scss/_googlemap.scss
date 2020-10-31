@@ -1,0 +1,20 @@
+.googlemap {
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 60%;
+	margin-bottom: 200px;
+	position: relative;
+
+	@include mq(){
+		margin-top: -75px;
+		padding-bottom: 30%;
+	}
+
+	&__frame {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
