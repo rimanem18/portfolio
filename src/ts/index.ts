@@ -2,7 +2,9 @@
 const { intersectAction } = require('./libs/intersectAction');
 const Swiper = require('./libs/swiper.min.js');
 
-var swiper = new Swiper('.swiper-container', {
+const d = document;
+
+const swiper = new Swiper('.swiper-container', {
     autoplay: {
       delay: 3000,
     },
@@ -16,7 +18,6 @@ var swiper = new Swiper('.swiper-container', {
     },
   });
 
-const d = document;
 
 const animClass = [
 	'.clip-inset',
@@ -36,3 +37,5 @@ animClass.forEach(anim => {
 		}
 	}, null);
 });
+
+
