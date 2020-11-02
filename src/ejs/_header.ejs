@@ -12,3 +12,43 @@
 
 <body>
 	<div class="container">
+
+		<header class="header">
+			<nav class="navigation">
+				<ul class="gnav">
+					<%
+					const gnav = [
+						{
+							url: './',
+							text:'HOME'
+						},
+						{
+							url: '#news',
+							text: 'ニュース'
+						},
+						{
+							url: '#development',
+							text: 'ゲーム開発'
+						},
+						{
+							url: '#about',
+							text: '企業情報'
+						},
+						{
+							url: '#message',
+							text: '代表者メッセージ'
+						},
+						{
+							url: '#blog',
+							text: 'ブログ'
+						}
+					]
+					%>
+					<% gnav.forEach(element => { %>
+					<li class="gnav__item">
+						<a href="<%= element.url %>" class="gnav__link"><%= element.text %></a>
+					</li>
+					<% }); // endforeach %>
+				</ul>
+			</nav>
+		</header>

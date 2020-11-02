@@ -1,0 +1,20 @@
+.gnav {
+	background: #222222;
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+
+	&__item {
+		display: inline-block;
+	}
+	&__link {
+		padding: 20px;
+		display: block;
+		text-decoration: none;
+		color: #ffffff;
+	}
+}

@@ -18,7 +18,7 @@
 	<!-- <div class="swiper-pagination"></div> -->
 </div>
 
-<div class="overflow-up">
+<div id="news" class="overflow-up">
 	<%
 	const infoList = [
 		{
@@ -64,7 +64,7 @@
 	</dl>
 </div>
 
-<div class="overlap-panels">
+<div id="development" class="overlap-panels">
 	<div class="overlap-panels__bg-blue"></div>
 	<div class="overlap-panels__img">
 		<img class="img" src="<%= domain %>/img/game_dev.jpg" alt="">
@@ -96,7 +96,7 @@
 	</div>
 </div>
 
-<h2 class="clip-inset">企業情報</h2>
+<h2 id="about" class="clip-inset">企業情報</h2>
 
 <div class="overlap__bg-gray">
 	<div class="overlap__img-left">
@@ -168,7 +168,7 @@
 		tabindex="0"></iframe>
 </div>
 
-<div class="overlap-panels">
+<div id="message" class="overlap-panels">
 	<div class="overlap-panels__bg-blue--second"></div>
 	<div class="overlap-panels__img--second">
 		<img class="img" src="<%= domain %>/img/president.jpg" alt="">
@@ -191,7 +191,7 @@
 				</p>
 				<p>
 					日本のサブカルチャーは今や海外にも広く認知され、そして深く愛されるものとなっています。<br>
-					私たちはそんな素敵なつながりを、よりよいモノにしていきたいと考えています。
+					私たちはそんな素敵なつながりを、よりよりモノにしていきたいと考えています。
 				</p>
 			</div>
 		</div>
@@ -223,7 +223,7 @@ const blogList = [
 	},
 ]
 %>
-<div class="blog">
+<div id="blog" class="blog">
 	<h2 class="clip-inset">BLOG</h2>
 	<ul class="card-list">
 		<% blogList.forEach(element => { %>
