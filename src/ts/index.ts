@@ -5,18 +5,18 @@ const Swiper = require('./libs/swiper.min.js');
 const d = document;
 
 const swiper = new Swiper('.swiper-container', {
-    autoplay: {
-      delay: 3000,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+	autoplay: {
+		delay: 3000,
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+});
 
 
 const animClass = [
@@ -39,3 +39,17 @@ animClass.forEach(anim => {
 });
 
 
+// スマホメニューボタン
+const spmenu = d.getElementById('js-spmenu');
+const gnav = d.getElementById('js-gnav')
+
+spmenu.addEventListener('click', () => {
+
+	// ナビが開いているかどうかチェック
+	if (gnav.classList.contains('open') == true) {
+		gnav.classList.remove('open');
+	} else {
+		gnav.classList.add('open');
+	}
+	
+});
