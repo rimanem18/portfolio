@@ -27,12 +27,15 @@ const browserSync = require('browser-sync').create();
 // エラー停止防御 / デスクトップ通知
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
-// HTML 圧縮
+// HTML / CSS 圧縮
 const htmlmin = require('gulp-htmlmin');
+const cleanCSS = require("gulp-clean-css");
+
 // バンドル用
 const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
-const webpackConfig = require("./webpack.config");
+const webpackConfigProd = require("./webpack.prod");
+const webpackConfigDev = require("./webpack.dev");
 
 
 // ディレクトリ
@@ -72,8 +75,6 @@ const errorHandler = (err, stats) => {
 	}
 }
 
-
-
 // EJS コンパイル
 const ejsFiles = () => {
 	// JSONファイル読み込み
@@ -102,18 +103,6 @@ const styles = () => {
 		)
 		.pipe(dest(PATHS.styles.dest));
 }
-
-// TypeScript コンパイル
-// const ts = () => {
-// 	return src(PATHS.scripts.src)
-// 		.pipe(plumber({ errorHandler: errorHandler }))
-// 		.pipe(
-// 			typescript({
-// 				target: "ES6"
-// 			})
-// 		)
-// 		.js.pipe(dest(PATHS.scripts.dest));
-// }
 
 // images
 const image = () => {
@@ -145,8 +134,13 @@ const font = () => {
 }
 
 // バンドル
-const bundle = () => {
-	return webpackStream(webpackConfig, webpack)
+const bundleDev = () => {
+	return webpackStream(webpackConfigDev, webpack)
+		.pipe(plumber({ errorHandler: errorHandler }))
+		.pipe(dest(PATHS.scripts.dest));
+};
+const bundleProd = () => {
+	return webpackStream(webpackConfigProd, webpack)
 		.pipe(plumber({ errorHandler: errorHandler }))
 		.pipe(dest(PATHS.scripts.dest));
 };
@@ -156,12 +150,12 @@ const bundle = () => {
 const watchFiles = done => {
 	watch(PATHS.config, series(reload));
 
-	watch(PATHS.ejs._src, series(ejsFiles, minifyHTML, reload));
+	watch(PATHS.ejs._src, series(ejsFiles, reload));
 	watch(PATHS.styles._src, series(styles, reload));
 
 	watch(PATHS.image.src, series(image, reload));
 
-	watch(PATHS.scripts.src, series(bundle));
+	watch(PATHS.scripts.src, series(bundleDev));
 	watch(PATHS.scripts.bundle, series(reload));
 
 	watch(PATHS.font.src, series(font, reload));
@@ -206,16 +200,24 @@ const minifyHTML = () => {
 		.pipe(dest(PATHS.ejs.dest))
 }
 
+// CSS 圧縮
+const minifyCSS = () => {
+	return src(PATHS.styles.dest + '/**/*.css')
+	.pipe(cleanCSS())
+	.pipe(dest(PATHS.styles.dest));
+}
+
+
 // commands
 exports.default = series(
-	parallel(bundle, ejsFiles, styles, image, font),
-	parallel(minifyHTML), // minify task
+	parallel(bundleDev, ejsFiles, styles, image, font),
+	// parallel(minifyHTML), // minify task
 	series(server, watchFiles)
 );
 exports.image = series(
 	image
 );
-exports.production = series(
-	parallel(bundle, ejsFiles, styles, image, font),  // コンパイル task
-	parallel(minifyHTML) // minify task
+exports.prod = series(
+	parallel(bundleProd, ejsFiles, styles, image, font),  // コンパイル task
+	parallel(minifyHTML, minifyCSS) // minify task
 );
