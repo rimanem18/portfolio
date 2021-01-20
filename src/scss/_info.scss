@@ -15,6 +15,10 @@
 		position: absolute;
 		top: -1.5em;
 		left: -1em;
+
+		@include mq(){
+			top: 1em;
+		}
 	}
 
 	&__list-item {

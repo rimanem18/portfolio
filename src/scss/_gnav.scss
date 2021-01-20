@@ -10,6 +10,10 @@
 	transform: translate(0, -100%);
 	transition: all 0.3s ease-in-out;
 
+	@include mq(){
+		transform: translate(0, 0);
+	}
+
 	&.open {
 		transform: translate(0, 0);
 	}

@@ -13,5 +13,9 @@
 		padding: 10px;
 		position: relative;
 		z-index: 100;
+
+		@include mq() {
+			display: none;
+		}
 	}
 }

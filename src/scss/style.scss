@@ -3,6 +3,10 @@
 
 @import "swiper.min";
 
+$header-height: 64px;
+html{
+	scroll-padding-top: $header-height;
+}
 
 @import "banner-list";
 @import "banner";
