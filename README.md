@@ -14,6 +14,7 @@ Gulp で変更を監視し、保存時に自動でトランスパイル及び We
 [IntersectAction](https://github.com/rimanem18/intersectAction)
 
 ## 実行及び出力
+以下のコマンドを実行することで、ソースコードがコンパイルされます。  
 ※実行にはあらかじめ PC に Node.js のインストールが必須です。  
 https://nodejs.org/ja/
 ### 初回時のみ
@@ -24,13 +25,18 @@ npm i -D
 ### 開発用
 ```言語:ターミナル
 npx gulp
+または
+npm run dev
 ```
 ローカルサーバーが立ち上がり、distフォルダにHTML/CSS/JSが出力されます。  
 https://localhost:3000 からアクセス可能で、保存がかかるたびにこのディレクトリ配下のページは自動リロードされます。  
 ソースコードの圧縮はされません。  
 ### 製品用
 ```言語:ターミナル
-npx gulp prod
+npx gulp --env prod
+または
+npm run build
 ```
 distフォルダにHTML/CSS/JSが出力されます。  
 開発用とは違いソースコードは圧縮、コンソールログやコメントアウトは削除され、実際にWebサイトとして配信するのに適した状態になります。  
+ローカルサーバーは立ち上がりません。

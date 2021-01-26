@@ -27,9 +27,8 @@ const browserSync = require('browser-sync').create();
 // エラー停止防御 / デスクトップ通知
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
-// HTML / CSS 圧縮
+// HTML 圧縮
 const htmlmin = require('gulp-htmlmin');
-const cleanCSS = require("gulp-clean-css");
 
 // バンドル用
 const webpackStream = require("webpack-stream");
@@ -37,6 +36,18 @@ const webpack = require("webpack");
 const webpackConfigProd = require("./webpack.prod");
 const webpackConfigDev = require("./webpack.dev");
 
+// コマンド引数で分岐
+const minimist = require('minimist');
+
+
+// 引数を格納するための変数の記述
+const options = minimist(process.argv.slice(2), {
+	string: 'env',
+	default: {
+		env: 'develop' // 引数の初期値
+	}
+});
+const cmdArg = options.env;
 
 // ディレクトリ
 const PATHS = {
@@ -79,22 +90,35 @@ const errorHandler = (err, stats) => {
 const ejsFiles = () => {
 	// JSONファイル読み込み
 	const json = JSON.parse(fs.readFileSync(PATHS.config));
-	return src(PATHS.ejs.src)
-		.pipe(plumber({ errorHandler: errorHandler }))
-		// .pipe(ejs({}, {}, { ext: ".html" }))
-		.pipe(ejs(json, {}, { ext: ".html" }))
-		.pipe(rename({ extname: ".html" }))
-		.pipe(prettify())
-		.pipe(dest(PATHS.ejs.dest));
-
+	let result;
+	result = src(PATHS.ejs.src)
+	.pipe(plumber({ errorHandler: errorHandler }))
+	// .pipe(ejs({}, {}, { ext: ".html" }))
+	.pipe(ejs(json, {}, { ext: ".html" }))
+	.pipe(rename({ extname: ".html" }))
+	.pipe(prettify())
+	if(cmdArg === 'prod'){
+		result.pipe(htmlmin({
+			// 余白を除去する
+			collapseWhitespace: true,
+			// HTMLコメントを除去する
+			removeComments: true
+		}))
+	}
+	return result.pipe(dest(PATHS.ejs.dest));
 }
+
 
 // SCSS コンパイル
 const styles = () => {
+	let output = 'expanded';
+	if(cmdArg === 'prod') {
+		output = 'compressed';
+	}
 	return src(PATHS.styles.src)
 		.pipe(plumber({ errorHandler: errorHandler }))
 		.pipe(sass({
-			outputStyle: 'expanded'
+			outputStyle: output
 		}))
 		.pipe(
 			autoPrefixer({
@@ -134,13 +158,12 @@ const font = () => {
 }
 
 // バンドル
-const bundleDev = () => {
-	return webpackStream(webpackConfigDev, webpack)
-		.pipe(plumber({ errorHandler: errorHandler }))
-		.pipe(dest(PATHS.scripts.dest));
-};
-const bundleProd = () => {
-	return webpackStream(webpackConfigProd, webpack)
+const bundle = () => {
+	let configPath = webpackConfigDev;
+	if(cmdArg === 'prod') {
+		configPath = webpackConfigProd;
+	}
+	return webpackStream(configPath, webpack)
 		.pipe(plumber({ errorHandler: errorHandler }))
 		.pipe(dest(PATHS.scripts.dest));
 };
@@ -148,17 +171,20 @@ const bundleProd = () => {
 // ファイルの変更を監視
 // watch
 const watchFiles = done => {
-	watch(PATHS.config, series(reload));
+	// prod じゃないときだけ監視
+	if(cmdArg !== 'prod'){
+		watch(PATHS.config, series(reload));
 
-	watch(PATHS.ejs._src, series(ejsFiles, reload));
-	watch(PATHS.styles._src, series(styles, reload));
+		watch(PATHS.ejs._src, series(ejsFiles, reload));
+		watch(PATHS.styles._src, series(styles, reload));
 
-	watch(PATHS.image.src, series(image, reload));
+		watch(PATHS.image.src, series(image, reload));
 
-	watch(PATHS.scripts.src, series(bundleDev));
-	watch(PATHS.scripts.bundle, series(reload));
+		watch(PATHS.scripts.src, series(bundle));
+		watch(PATHS.scripts.bundle, series(reload));
 
-	watch(PATHS.font.src, series(font, reload));
+		watch(PATHS.font.src, series(font, reload));
+	}
 	done();
 }
 
@@ -176,7 +202,10 @@ const browserSyncOption = {
 	}
 };
 const server = done => {
-	browserSync.init(browserSyncOption);
+	// prod じゃないときだけ起動
+	if(cmdArg !== 'prod'){
+		browserSync.init(browserSyncOption);
+	}
 	done();
 }
 
@@ -187,37 +216,11 @@ const reload = done => {
 	console.info("Browser reload completed");
 }
 
-
-// HTML 圧縮
-const minifyHTML = () => {
-	return src(PATHS.ejs.dest + '/**/*.html')
-		.pipe(htmlmin({
-			// 余白を除去する
-			collapseWhitespace: true,
-			// HTMLコメントを除去する
-			removeComments: true
-		}))
-		.pipe(dest(PATHS.ejs.dest))
-}
-
-// CSS 圧縮
-const minifyCSS = () => {
-	return src(PATHS.styles.dest + '/**/*.css')
-	.pipe(cleanCSS())
-	.pipe(dest(PATHS.styles.dest));
-}
-
-
 // commands
 exports.default = series(
-	parallel(bundleDev, ejsFiles, styles, image, font),
-	// parallel(minifyHTML), // minify task
+	parallel(bundle, ejsFiles, styles, image, font),
 	series(server, watchFiles)
 );
 exports.image = series(
 	image
-);
-exports.prod = series(
-	parallel(bundleProd, ejsFiles, styles, image, font),  // コンパイル task
-	parallel(minifyHTML, minifyCSS) // minify task
 );
